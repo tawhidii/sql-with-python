@@ -9,5 +9,8 @@ db = mysql.connector.connect(
 )
 
 db_cursor= db.cursor()
-db_cursor
+db_cursor.execute('SHOW DATABASES') # will get all databases
+
+for d in db_cursor:
+    print(d) # list all databases
 
