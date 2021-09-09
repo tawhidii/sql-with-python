@@ -37,4 +37,32 @@ def insert_value():
     mydb.commit()
     mydb.close()
 
-insert_value()
+# insert_value()
+
+# fetching values 
+def fecth_value():
+    # fetch all 
+    cursor.execute("""
+    SELECT * FROM cities;
+    """)
+    # fetch spefic attrs 
+    cursor.execute("""
+        SELECT name,country,area FROM cities;
+    """)
+    rows = cursor.fetchall()
+    print(rows)
+    mydb.close()
+
+# fecth_value()
+
+
+# do calculation in rows 
+def calculation():
+    cursor.execute("""
+        SELECT name, population/area AS density FROM cities;
+    """)
+    rows = cursor.fetchall()
+    print(rows)
+    mydb.close()
+
+calculation()
