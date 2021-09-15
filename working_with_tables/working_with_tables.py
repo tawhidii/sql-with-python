@@ -1,5 +1,5 @@
 from db import mydb as con
-
+import pandas
 cursor = con.cursor()
 
 
@@ -66,7 +66,26 @@ def insert_values_to_photos():
     con.commit()
     con.close()
 
-insert_values_to_photos()
+# insert_values_to_photos()
+
+
+def get_user_image_url():
+    
+    # getting all data of specific user 
+    # query = """
+    #     SELECT * FROM photos WHERE user_id =4;
+    # """
+
+    # gettings image url data by join 
+    query = """
+        SELECT username,url FROM photos 
+            JOIN users ON users.id = photos.user_id
+    """
+    data = pandas.read_sql_query(query,con)
+    con.close()
+    print(pandas.DataFrame.head(data))
+
+get_user_image_url()
 
 
 
