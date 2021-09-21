@@ -61,4 +61,18 @@ def fetch_with_full_join():
     data = pandas.read_sql_query(query,conn)
     print(data)
 
-fetch_with_full_join()
+# fetch_with_full_join()
+
+
+
+def fetch_data_with_join_where():
+    query = """
+        SELECT contents,url FROM comments
+        JOIN photos ON photos.id = comments.photo_id
+        WHERE comments.user_id = photos.user_id;
+    """
+    data = pandas.read_sql_query(query,conn)
+    print(data)
+
+
+fetch_data_with_join_where()
