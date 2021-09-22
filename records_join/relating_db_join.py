@@ -75,4 +75,28 @@ def fetch_data_with_join_where():
     print(data)
 
 
-fetch_data_with_join_where()
+# fetch_data_with_join_where()
+
+
+def example_of_three_way_join():
+
+    query = """
+        SELECT contents,url,username FROM comments
+        JOIN photos ON photos.id = comments.photo_id
+        JOIN users ON  users.id = photos.user_id AND users.id = comments.user_id;
+    """
+    data = pandas.read_sql_query(query,conn)
+
+    print(data)
+
+
+
+# example_of_three_way_join()
+
+
+
+
+#a = """
+#SELECT title,name,rating FROM reviews
+#JOIN books ON books.id = reviews.book_id JOIN authors ON authors.id = books.author_id AND authors.id = reviews.reviewer_id;
+#"""
